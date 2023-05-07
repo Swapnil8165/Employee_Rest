@@ -27,7 +27,7 @@ public class controller {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    
+    @GetMapping("/employee")
     public ResponseEntity<List<Employee>>getAllEmployee(){
         List<Employee> list = employeeRepository.findAll();
         if(list.isEmpty() || list.size()==0){
