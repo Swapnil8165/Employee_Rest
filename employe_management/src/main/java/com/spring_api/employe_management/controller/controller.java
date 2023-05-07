@@ -28,13 +28,6 @@ public class controller {
     private EmployeeRepository employeeRepository;
 
     
-    
-    @GetMapping("/employee")
-    // public List<Employee> getAllEmployee(){
-    //     return employeeRepository.findAll();
-
-    // }
-
     public ResponseEntity<List<Employee>>getAllEmployee(){
         List<Employee> list = employeeRepository.findAll();
         if(list.isEmpty() || list.size()==0){
@@ -42,19 +35,6 @@ public class controller {
         }
         return new ResponseEntity<List<Employee>>(list,HttpStatus.OK);
     }
-
-    // public ResponseEntity<List<Employee>> getALLEmployee(){
-    //     try{
-    //         List<Employee> list = employeeRepository.findAll();
-    //         if(list.isEmpty() || list.size()==0){
-    //             return new ResponseEntity<List<Employee>>(HttpStatus.NO_CONTENT);
-    //         }
-    //         return new ResponseEntity<List<Employee>>(list, HttpStatus.OK);
-    //     }
-    //     catch(Exception e){
-    //         return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
-         
-    //     }
 
     @GetMapping("/employee/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable long id){
@@ -68,8 +48,6 @@ public class controller {
     }
 
     @PostMapping("/employee")
-    // public void createEmployee( @RequestBody Employee employee){
-    //     employeeRepository.save(employee);
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee){
         try{
             return new ResponseEntity<>(employeeRepository.save(employee),HttpStatus.OK);
@@ -96,12 +74,6 @@ public class controller {
 
         return ResponseEntity.ok(employee1);
     }
-
-        
-    // public void updateEmployee( @RequestBody Employee employee){
-    //          employeeRepository.save(employee);
-    // }
-
 
     @DeleteMapping("/employee/{id}")
     public void  deletEmployee(@PathVariable long id){
